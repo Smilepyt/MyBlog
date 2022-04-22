@@ -137,6 +137,7 @@ const test7 = new MyPromise((resolve, reject) => {
     resolve(100) // 成功 200
     // reject(300) // 成功 300
 }).then(res => 2 * res, err => 3 * err).then(res => console.log('成功', res), err => console.log('失败', err))
+
 const test8 = new MyPromise((resolve, reject) => {
     resolve(100) // 失败 200
     // reject(100) // 成功 300
