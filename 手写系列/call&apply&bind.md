@@ -97,3 +97,5 @@ if(this.prototype) {
 }
 F.prototype = new X()
 ```
+- 参考
+    - [bind 函数的实现原理](https://zhuanlan.zhihu.com/p/38968174)
