@@ -9,9 +9,11 @@ Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结
 
 ```js
 class MyPromise {
+
     static PENDING = 'pending'
     static FULFILED = 'fulfiled'
     static REJECTED = 'rejected'
+
     constructor(executor) {
         // promise 初始状态
         this.PromiseState = MyPromise.PENDING
@@ -58,11 +60,16 @@ class MyPromise {
                 setTimeout(() => {
                     try {
                         const x = cb(this.PromiseResult)
+                        // 回调不能是本身
                         if (x === thenPromise) {
                             throw new Error('回调不能是本身')
-                        } else if (x instanceof MyPromise) {
+                        } 
+                        // 如果是 Promise 继续交给 then 执行
+                        else if (x instanceof MyPromise) {
                             x.then(resolve, reject)
-                        } else {
+                        } 
+                        // 非 Promise 返回成功值
+                        else {
                             resolve(this.PromiseResult)
                         }
                     } catch (error) {
